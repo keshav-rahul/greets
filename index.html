@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Greeting</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #e0f2f1; text-align: center; padding: 20px; }
+        .container { background: white; border-radius: 10px; padding: 20px; max-width: 500px; margin: 0 auto; }
+        img { max-width: 100%; height: auto; border-radius: 10px; }
+        input { padding: 10px; width: 80%; margin: 10px 0; }
+        button { background: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://via.placeholder.com/300x200/80cbc4/ffffff?text=Greeting+Image" alt="Greeting">
+        <h1>Happy Diwali!</h1>
+        <p>Wishing you a wonderful celebration!</p>
+        <input type="text" id="nameInput" placeholder="Your Name">
+        <p id="preview">Wishing you a wonderful celebration! - </p>
+        <button id="whatsappBtn">Send on WhatsApp</button>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const preview = document.getElementById('preview');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+
+        nameInput.addEventListener('input', function() {
+            const name = nameInput.value.trim();
+            preview.textContent = `Wishing you a wonderful celebration! - ${name}`;
+        });
+
+        whatsappBtn.addEventListener('click', function() {
+            const name = nameInput.value.trim();
+            if (name) {
+                const message = encodeURIComponent(`Wishing you a wonderful celebration! - ${name}`);
+                window.open(`https://wa.me/?text=${message}`, '_blank');
+            } else {
+                alert("Please enter your name first!");
+            }
+        });
+    </script>
+</body>
+</html>
